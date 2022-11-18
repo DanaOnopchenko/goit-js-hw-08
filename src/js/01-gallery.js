@@ -8,6 +8,8 @@ import '../css/common.css';
 
 // console.log(galleryItems);
 const galleryEl = document.querySelector(".gallery");
+
+
 // galleryEl.addEventListener('click', onOpenModal)
 const markup = galleryItems.map(({
     preview,
