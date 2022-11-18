@@ -3,22 +3,35 @@
 
 const refs = {
     form: document.querySelector('.feedback-form'),
-    // textarea: document.querySelector('.feedback-form  textarea'),
+    textarea: document.querySelector('.feedback-form  textarea'),
 
 }
-console.log(refs.form)
-// refs.form.addEventListener('submit', onformSubmit);
-// refs.textarea.addEventListener('input', onTextareaInput);
+messageOutput();
 
-// // function onformSubmit(evt) { }
+refs.form.addEventListener('submit', onFormSubmit);
+refs.textarea.addEventListener('input', onTextareaInput);
+
+function onFormSubmit(evt) { 
+    evt.preventDefault();
+
+    console.log('Відправляємо форму');
+
+    evt.currentTarget.reset();
+    localStorage.removeItem('feedback-msg');
+}
 
 
-// function onTextareaInput(evt) { 
-//     const massage = evt.currentTarget.value;
-//     localStorage.setItem('feedback-msg', massage);
-// }
+function onTextareaInput(evt) { 
+    const massage = evt.currentTarget.value;
+    localStorage.setItem('feedback-msg', massage);
+}
 
 
-// function messageOutput() { }
-const formEl = document.querySelector('.feedback-form');
-console.log(formEl)
+function messageOutput() { 
+    const savedMessage = localStorage.getItem('feedback-msg');
+    if (savedMessage) {
+        refs.textarea.value = savedMessage;
+
+
+     }
+}
