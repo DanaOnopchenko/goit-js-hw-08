@@ -40,7 +40,7 @@ function messageOutput() {
     console.log(savedMessageFormData )
     if (savedMessageFormData) {
         formData = JSON.parse(savedMessageFormData);
-        refs.input.value = formData.email;
-        refs.textarea.value = formData.message;
+        refs.input.value = formData.email || '';
+        refs.textarea.value = formData.message || '';
      }
 }
